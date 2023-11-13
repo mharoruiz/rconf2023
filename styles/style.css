@@ -163,12 +163,20 @@
     font-family: "Inter"; 
     font-size: 37px;
     text-align: left;
+    padding: 10px 0;
     margin: 0;
+}
+.plot-subtitle-1 {
+    font-family: "Inter"; 
+    font-size: 25px;
+    text-align: left;
+    padding-left: 40px;
+    margin: 10px 0 10px;
 }
 
 select {
     font-family: "Inter";
-    font-size: 35px;
+    font-size: 23px;
 }
 
 .plot-title-2 {
