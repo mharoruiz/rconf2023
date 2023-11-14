@@ -49,12 +49,15 @@
 
 				<section>
 
-					<p class="plot-title-1-en">
-						<span class="gas-span">average EU</span>
-						electricity prices
+					<p class="plot-title-1">
+						<span class="gas-span">Average electricity prices</span>
+						in the EU
+					</p>
+
+					<p class="plot-subtitle-1">
 						<select id="selectOption">
-							<option class="selectedItem" value="before">before</option>
-							<option class="selectedItem" value="during">during</option>
+							<option class="selectedItem" value="before">Before</option>
+							<option class="selectedItem" value="during">During</option>
 						</select>
 						the energy crisis
 					</p>
@@ -81,7 +84,7 @@
 							heightCTX = 450, 
 							marginTopCTX = 15, 
 							marginRightCTX = 45, 
-							marginBottomCTX = 25, 
+							marginBottomCTX = 30, 
 							marginLeftCTX = 80;
 						
 						// Declare the positional encodings
@@ -239,7 +242,7 @@
 							gCTX.append("text")
 								.text("Gas")
 								.attr("x", xCTX(Date.parse(e2_date)) + 7.5)
-								.attr("y", 345)
+								.attr("y", 320)
 								.attr("font-family", "Kanit")
 								.attr("font-size", "25px")
 								.style("text-anchor", "start")
@@ -253,7 +256,7 @@
 							gCTX.append("text")
 								.text("Futures")
 								.attr("x", xCTX(Date.parse(e2_date)) + 7.5)
-								.attr("y", 370)
+								.attr("y", 350)
 								.attr("font-family", "Kanit")
 								.attr("font-size", "25px")
 								.style("text-anchor", "start")
@@ -936,7 +939,7 @@
 
 				<section>
 
-					<p class="plot-title-1-en">
+					<p class="plot-title-1">
 						Energy-only inflation in 
 						<span class="es-span">Spain</span>
 						and

@@ -49,12 +49,12 @@
 
 				<section>
 
-					<p class="plot-title-1-es">
+					<p class="plot-title-1">
 						<span class="gas-span">Precio medio de la electricidad</span>
 						en la UE
 					</p>
 
-					<p class="plot-subtitle-1-es">
+					<p class="plot-subtitle-1">
 						<select id="selectOption">
 							<option class="selectedItem" value="before">Antes de</option>
 							<option class="selectedItem" value="during">Durante</option>
@@ -242,9 +242,9 @@
 							    .attr("stroke-dasharray", `${lCTX},${lCTX}`);
 
 							gCTX.append("text")
-								.text("Gas")
+								.text("Futuros")
 								.attr("x", xCTX(Date.parse(e2_date)) + 7.5)
-								.attr("y", 345)
+								.attr("y", 320)
 								.attr("font-family", "Kanit")
 								.attr("font-size", "25px")
 								.style("text-anchor", "start")
@@ -256,9 +256,9 @@
 								.style("opacity", 1)
 
 							gCTX.append("text")
-								.text("Futuro")
+								.text("de Gas")
 								.attr("x", xCTX(Date.parse(e2_date)) + 7.5)
-								.attr("y", 370)
+								.attr("y", 350)
 								.attr("font-family", "Kanit")
 								.attr("font-size", "25px")
 								.style("text-anchor", "start")
@@ -935,7 +935,7 @@
 
 				<section>
 
-					<p class="plot-title-1-en">
+					<p class="plot-title-1">
 						Tasa de inflación energética en 
 						<span class="es-span">Expaña</span>
 						y
