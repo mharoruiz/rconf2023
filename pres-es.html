@@ -5,40 +5,40 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<meta name="author" content="Miguel Haro Ruiz"/>
 
-		<title>IBEX - RConf 2023</title>
+		<title>EXIB - RConf 2023</title>
 
-		<!-- <link rel="stylesheet" href="dist/reset.css"> -->
 		<link rel="stylesheet" href="dist/reveal.css">
 		<link rel="stylesheet" href="dist/theme/simple.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Serif:wght@300;400;500;600&family=Open+Sans:wght@200;300;400;500;600&family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&family=Nunito+Sans:wght@300;400;500;600&family=Kanit:wght@200;300;400;500;600&family=Outfit:wght@100;200;300;400;500;600&family=Sometype+Mono:wght@400;500;600&display=swap" rel="stylesheet">	
-		<!-- Theme used for syntax highlighted code -->
-		<!-- <link rel="stylesheet" href="plugin/highlight/monokai.css"> -->
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Serif:wght@300;400;500;600&family=Open+Sans:wght@200;300;400;500;600&family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&family=Nunito+Sans:wght@300;400;500;600&family=Kanit:wght@200;300;400;500;600&family=Outfit:wght@100;200;300;400;500;600&family=Sometype+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="styles/style.css">
 	</head>
 	<body>
-
-		<script src="js/d3.v7.min.js"></script>
 
 		<div class="reveal">
 
 			<div class="slides">
 
 				<section>
+
 					<h2 class="main-title">El impacto de la excepción ibérica sobre la inflación:</h2>
+
 					<h4 class="main-subtitle">Estimación vía controles sintéticos</h4>
+
 					<p class="authors" id="first-author">
 						Miguel 
 						<span style="font-weight: 400;">
 							Haro Ruiz
 						</span>
 					</p>
+
 					<p class="authors">Christoph
 						<span style="font-weight: 400;">
 							Schult
 						</span> 
 					</p>
+
 					<p class="authors">Christoph
 						<span style="font-weight: 400;">
 							Wunder
@@ -48,27 +48,32 @@
 				</section>
 
 				<section>
-					<p class="plot-title-1">
+
+					<p class="plot-title-1-es">
 						<span class="gas-span">Precio medio de la electricidad</span>
 						en la UE
 					</p>
-					<p class="plot-subtitle-1">
+
+					<p class="plot-subtitle-1-es">
 						<select id="selectOption">
 							<option class="selectedItem" value="before">Antes de</option>
 							<option class="selectedItem" value="during">Durante</option>
 						</select>
 						la crisis energética
 					</p>
+
 					<div id="containerCTX"></div>
-					<script src="js/d3.v7.min.js"></script>
+
 					<script type="module">
 
-						const rawElecGas = await d3.csv("data/elec_gas.csv");
-						const s1_date = "2020-06-01"
-						const e1_date = "2021-06-01"
-						const s2_date = "2021-06-15"
-						const e2_date = "2022-06-15"
-						const elecGas = rawElecGas.filter((d) => Date.parse(d.date) >= Date.parse(s1_date) 
+						const rawElecGas = await d3.csv("data/elec_gas.csv"), 
+							s1_date = "2020-06-01", 
+							e1_date = "2021-06-01", 
+							s2_date = "2021-06-15", 
+							e2_date = "2022-06-15";						
+						
+						const elecGas = rawElecGas.filter(
+							(d) => Date.parse(d.date) >= Date.parse(s1_date) 
 							& Date.parse(d.date) <= Date.parse(e2_date)
 							);
 						const gasOnly = elecGas.filter((d) => Date.parse(d.date) >= Date.parse(s2_date) 
@@ -78,10 +83,10 @@
 
 						// Declare the chart dimensions and margins
 						const widthCTX = 900, 
-							heightCTX = 500, 
+							heightCTX = 450, 
 							marginTopCTX = 15, 
 							marginRightCTX = 45, 
-							marginBottomCTX = 50, 
+							marginBottomCTX = 30, 
 							marginLeftCTX = 80;
 						
 						// Declare the positional encodings
@@ -268,6 +273,11 @@
 						
 					    containerCTX.append(svgCTX.node());
 
+						d3.select("#containerCTX")
+    						.append("p")
+    						.text("Fuente: Energy-charts, Barchart, cálculos propios.")
+    						.attr("class", "plot-source")
+
 					</script>
 
 				</section>
@@ -277,48 +287,68 @@
 				</section>
 
 				<section>
-					<h2 class="slide-title-2">La IBEX</h2>
+
+					<h2 class="slide-title-2">La EXIB</h2>
+
 					<p class="fragment slide-text-2">Entra en vigor el 15 de Junio de 2023</p>
+
 					<p class="fragment slide-text-2"><b>Desacopla</b> el precio de la electricidad del precio del gas:</p>
+
 					<ol class="list-2">
-						<li class="fragment">Fijar tope al precio de electricidad producida con gas</li>
+						<li class="fragment">Tope al precio de electricidad producida con gas</li>
 						<li class="fragment">Mecanismo de ajuste para evitar posibles pérdidas</li>
-						<li class="fragment">Pagado por consumidores + exportaciones a Francia</li>
+						<li class="fragment">Pagada por consumidores + exportaciones a Francia</li>
 					</ol>
+
 				</section>
 
 				<section>
-					<h2 class="slide-title-2">La excepción de iberia</h2>
+
+					<h2 class="slide-title-2">La excepción de Iberia</h2>
+
 					<ul class="list-1">
+
 						<p class="fragment slide-text-1" data-fragment-index="1">Estrategias contra la crisis energética en la UE:</p>
+						
 						<ul class="sublist-1">
 							<li class="fragment" data-fragment-index="2">Reducciones fiscales</li>
 							<li class="fragment" data-fragment-index="2">Transferencias directas</li>
 							<li class="fragment" data-fragment-index="2">Regulación del mercado minorista</li>
 						</ul>
-						<p class="fragment slide-text-1" data-fragment-index="3">La IBEX es la 
+
+						<p class="fragment slide-text-1" data-fragment-index="3">La EXIB es la 
 							<span style="font-weight: 400;">única medida</span> 
 							que interviene en el mercado mayorista
 						</p>
+
 					</ul>
+
 				</section>
 
 				<section>
+
 					<h2 class="slide-title-2">Diseño experimental</h2>
+
 					<ul class="list-1">
+
 						<p class="slide-text-1 fragment" data-fragment-index="1">
-							La IBEX presenta un 
+							La EXIB presenta un 
 							<span style="font-weight: 400;">experimento natural</span>
 						</p>
+
 						<ul class="sublist-1">
 							<li class="fragment" data-fragment-index="1">Mientras el mercado ibérico opera bajo nuevas normas;</li>
 							<li class="fragment" data-fragment-index="2">Los otros mercados de la UE operan con normalidad</li>
 						</ul>
-						<p class="slide-text fragment" data-fragment-index="3">Objetivo de la inverstigación:</p>
+						
+						<p class="slide-text fragment" data-fragment-index="3">Objetivo de la investigación:</p>
+
 						<ul class="sublist-1">
-							<p class="fragment slide-text-2" data-fragment-index="3">Estimar el impacto causal de la IBEX sobre los precios</p>
+							<p class="fragment slide-text-2" data-fragment-index="3">Estimar el impacto causal de la EXIB sobre los precios</p>
 						</ul>
+
 					</ul>
+
 				</section>
 
 				<section class="chapter" data-transition="slide" data-background-color="rgb(35, 35, 35)">
@@ -326,31 +356,43 @@
 				</section>
 
 				<section>
+
 					<h2 class="slide-title">Metodología</h2>
+
 					<ul class="list-4">
+
 						<p class="slide-text-1">Estimación contrafactual vía 
 							<span style="font-weight: 400;">controles sintéticos</span>
 						</p>
+
 						<p class="fragment slide-text-1" data-fragment-index="1">Variables de interés</p>
+
 						<ul class="sublist-4">
+
 							<li class="fragment" data-fragment-index="1">
 								<span style="font-weight: 400;">DAP:</span> 
 								Precio diario de electricidad
 							</li>
+
 							<li class="fragment" data-fragment-index="2">
 								<span style="font-weight: 400;">NRG:</span> 
 								Índice de Precios de Consumo (IPC) energético
 							</li>
+
 							<li class="fragment" data-fragment-index="3">
 								<span style="font-weight: 400;">xNRG:</span>
 								IPC excluyendo energía
 								</li>
+
 							<li class="fragment" data-fragment-index="4">
 								<span style="font-weight: 400;">CP00:</span> 
 								IPC general
 							</li>
+
 						</ul>
+
 					</ul>
+
 				</section>
 
 				
@@ -359,32 +401,35 @@
 				</section>
 
 				<section>
+
 					<p class="plot-title-2">IPC general
 						<span class="obs-span">observable</span>
 						y 
 						<span class="synth-span">sintético</span>
 						en España
 					</p>
+
 					<div id="containerSC"></div>
-					<!-- <script src="js/d3.v7.min.js"></script> -->
+					
 					<script type="module">
 
 						const rawSCSeries = await d3.csv("data/sc_series.csv");
 
 						// Declare the chart dimensions and margins
-						const widthSC = 900;
-						const heightSC = 500;
-						const marginTopSC = 30;
-						const marginRightSC = 30;
-						const marginBottomSC = 60;
-						const marginLeftSC = 60;
+						const widthSC = 900, 
+							heightSC = 470, 
+							marginTopSC = 30, 
+							marginRightSC = 30, 
+							marginBottomSC = 35, 
+							marginLeftSC = 60;
 
-						const interv_date = "2022-06-01";
-						const start_date = "2013-01-01";
-						const end_date = "2023-03-01";
-						const SCSeries = rawSCSeries.filter((d) => d.treated == "ES" & d.outcome == "CP00");
-						const preSeries = SCSeries.filter((d) => Date.parse(d.date) <= Date.parse(interv_date));
-						const postSeries = SCSeries.filter((d) => Date.parse(d.date) >= Date.parse(interv_date));
+						const interv_date = "2022-06-01", 
+							start_date = "2013-01-01", 
+							end_date = "2023-03-01";
+						
+						const SCSeries = rawSCSeries.filter((d) => d.treated == "ES" & d.outcome == "CP00"), 
+							preSeries = SCSeries.filter((d) => Date.parse(d.date) <= Date.parse(interv_date)), 
+							postSeries = SCSeries.filter((d) => Date.parse(d.date) >= Date.parse(interv_date));
 
 						// Declare the positional encodings
 						const xSC = d3.scaleUtc()
@@ -426,7 +471,7 @@
 						    .call(g => g.selectAll(".tick text")
 								.attr("y", -marginBottomSC)
 						        .attr("font-size", "20px")
-								.attr("font-family", "Poppins"))
+								.attr("font-family", "Poppins"));
 
 						gSC.append("g")
 						    .attr("transform", `translate(${marginLeftSC},0)`)
@@ -437,7 +482,7 @@
 						        .attr("stroke-opacity", 0.1))
 						    .call(g => g.selectAll(".tick text")
 						        .attr("font-size", "20px")
-								.attr("font-family", "Poppins"))
+								.attr("font-family", "Poppins"));
 						
 						// gSC.append('rect')
   						// 	.attr('fill', 'white')
@@ -450,7 +495,7 @@
 						gSC.append("text")
 							.attr("x", -350)
 						    .attr("y", -10)
-						    .text("CPI, 2015 = 100")
+						    .text("IPC, 2015 = 100")
 						    .attr("transform", "rotate(-90)")
 						    .attr("font-size", "30px")
 							.attr("font-family", "Inter");
@@ -459,9 +504,9 @@
 							.attr("x", xSC(Date.parse(interv_date))-10)
 							.attr("y", 30)
 							.style("text-anchor", "end")
-							.text("IBEX")
+							.text("EXIB")
 							.attr("font-size", "20px")
-							.attr("font-family", "Nunito sans")
+							.attr("font-family", "Nunito sans");
 						
 						gSC.append("text")
 							.attr("x", xSC(Date.parse(interv_date))-10)
@@ -469,7 +514,7 @@
 							.style("text-anchor", "end")
 							.text("comienza")
 							.attr("font-size", "20px")
-							.attr("font-family", "Nunito sans")
+							.attr("font-family", "Nunito sans");
 
 						gSC.append("line")
 						    .attr('x1', xSC(Date.parse(interv_date)))
@@ -545,70 +590,85 @@
 					
 					    containerSC.append(svgSC.node());
 
+						d3.select("#containerSC")
+    						.append("p")
+    						.text("Fuente: Eurostat, cálculos propios.")
+    						.attr("class", "plot-source")
+
 					</script>
+
 				</section>
 
 				<section>
+
 					<p class="plot-title-2">IPC general
 						<span class="obs-span">observable</span>
 						y 
 						<span class="synth-span">sintético</span>
 						en España
 					</p>
-						<img class = "img1" src="images/CP00_es_es.png">
+
+					<img class = "img1" src="images/CP00_es_es.png">
+
 				</section>
 
 				<section>
+
 					<p class="plot-title-3">
 						Efecto Medio del Tratamiento:
 						<span class="es-span">España</span>
 						y
 						<span class="pt-span">Portugal</span>
 					</p>
+
 					<div class="legend-box">
 
 						<p class="plot-subtitle-3">Intervalos de confianza 90%</p>	
 
-						<div class="checkbox-ate">
+						<div class="checkbox-att">
+
 							<div>
 						  		<input type="checkbox" class="checkbox" value="DAP" checked />
-						  		<label class="check-label">DAP</label>
+						  		<label class="check-label-att">DAP</label>
 							</div>
+
 							<div>
 						  		<input type="checkbox" class="checkbox" value="NRG"/>
-						  		<label class="check-label">NRG</label>
+						  		<label class="check-label-att">NRG</label>
 							</div>
+
 							<div>
 						  		<input type="checkbox" class="checkbox" value="xNRG"/>
-						  		<label class="check-label">xNRG</label>
+						  		<label class="check-label-att">xNRG</label>
 							</div>
+
 							<div>
 						  		<input type="checkbox" class="checkbox" value="CP00"/>
-						  		<label class="check-label">CP00</label>
+						  		<label class="check-label-att">CP00</label>
 							</div>
+
 						</div>
 					
 					</div>
 					
-
 					<div id="containerATT"></div>
 					<!-- <script src="js/d3.v7.min.js"></script> -->
 					<script type="module">
 
 						// Import and filter data
-						const rawResults = await d3.csv("data/results_1.csv"),
+						const rawResults = await d3.csv("data/results.csv"),
 							resultsDAP = rawResults.filter((d) => d.outcome == "DAP"),
 							resultsNRG = rawResults.filter((d) => d.outcome == "NRG"),
 							resultsxNRG = rawResults.filter((d) => d.outcome == "xNRG"),
 							resultsCP00 = rawResults.filter((d) => d.outcome != "CP00");
 
 						// Declare the chart dimensions and margins
-						const widthATT = 900;
-						const heightATT = 400;
-						const marginTopATT = 50;
-						const marginRightATT = 30;
-						const marginBottomATT = 60;
-						const marginLeftATT = 70;
+						const widthATT = 900, 
+							heightATT = 400, 
+							marginTopATT = 50, 
+							marginRightATT = 30, 
+							marginBottomATT = 60, 
+							marginLeftATT = 70;
 
 						// Declare the positional encodings
 						const xATT = d3.scaleLinear()
@@ -643,7 +703,7 @@
 						        .attr("stroke-opacity", 0.1))
 						    .call(g => g.selectAll(".tick text")
 						        .attr("font-size", "20px")
-								.attr("font-family", "Poppins"))
+								.attr("font-family", "Poppins"));
 							
 						gATT.append("text")
 							.attr("x", marginLeftATT + widthATT/2.25)
@@ -651,7 +711,7 @@
 							//.style("text-anchor", "end")
 							.text("EMT")
 							.attr("font-size", "30px")
-							.attr("font-family", "Inter")
+							.attr("font-family", "Inter");
 
 						gATT.append("g")
 						    .attr("transform", `translate(${marginLeftATT}, 0)`)
@@ -683,7 +743,7 @@
 							} else {
 								return 15 
 							}
-						}
+						};
 
 						gATT.selectAll("circle")
 							.data(rawResults)
@@ -693,7 +753,7 @@
 								.attr("cy", d => yATT(d.outcome) + jitter(d.treated))
 								.style("fill", (d) => colorATT(d.treated))
 								.attr("r", 6)
-								.style("opacity", 0)
+								.style("opacity", 0);
 								
 						gATT.selectAll("confInts")
 							.data(rawResults)
@@ -706,7 +766,7 @@
 						  		.attr("y2", (d) => yATT(d.outcome) + jitter(d.treated))
 						  		.attr("stroke", (d) => colorATT(d.treated))
 								.attr("stroke-width", 2.5)
-								.style("opacity", 0)
+								.style("opacity", 0);
 
 						gATT.selectAll("finness1")
 							.data(rawResults)
@@ -719,7 +779,7 @@
 						  		.attr("y2", (d) => yATT(d.outcome) + jitter(d.treated) - 5)
 						  		.attr("stroke", (d) => colorATT(d.treated))
 								.attr("stroke-width", 2.5)
-								.style("opacity", 0)
+								.style("opacity", 0);
 						
 						gATT.selectAll("finness2")
 							.data(rawResults)
@@ -732,7 +792,7 @@
 						  		.attr("y2", (d) => yATT(d.outcome) + jitter(d.treated) - 5)
 						  		.attr("stroke", (d) => colorATT(d.treated))
 								.attr("stroke-width", 2.5)
-								.style("opacity", 0)
+								.style("opacity", 0);
 
 						function update() {
 
@@ -800,24 +860,27 @@
 
 					    containerATT.append(svgATT.node());
 
-					</script>
-				</section>
+						d3.select("#containerATT")
+    						.append("p")
+    						.text("Fuente: Cálculos propios.")
+    						.attr("class", "plot-source")
 
-				<!-- <section>
-					<div class="r-stack">
-						<img src="images/allResults1.png" width="926" height="550">
-						<img class="fragment" src="images/allResults2.png" width="926" height="550">
-					  </div>
-				</section> -->
+					</script>
+
+				</section>
 
 				<section class="chapter" data-transition="slide" data-background-color="rgb(35, 35, 35)">
 					<h1>Análisis</h1>
 				</section>
 
 				<section>
+
 					<h2 class="slide-title-3">¿Cómo se explica esta diferencia?</h2>
+
 					<ul class="list-4">
+
 						<p class="fragment slide-text" data-fragment-index="1">España</p>
+
 						<ul class="sublist-4">
 							<li class="fragment" data-fragment-index="1">Tarifa PVPC indexada por el precio mayorista</li>
 							<li class="fragment" data-fragment-index="1">~40% de hogares y empresas</li>
@@ -826,7 +889,9 @@
 								entre DAP y NRG
 							</li>
 						</ul>
+
 						<p class="fragment slide-text" data-fragment-index="3">Portugal</p>
+
 						<ul class="sublist-4" data-fragment-index="3">
 							<li class="fragment" data-fragment-index="3">Distribuidores prefieren contratos a largo plazo</li>
 							<li class="fragment" data-fragment-index="4">
@@ -834,11 +899,13 @@
 								entre DAP y NRG
 							</li>
 						</ul>
+
 					</ul>
+
 				</section>
 
 				<section>
-					<h2 class="slide-title-3">La IBEX es responsable de...</h2>
+					<h2 class="slide-title-3">La EXIB es responsable de...</h2>
 						<ul class="list-1">
 							<p class="fragment slide-text-1" data-fragment-index="1"> -40% sobre el precio mayorista de electricidad</p>
 							<p class="fragment slide-text-1" data-fragment-index="2">
@@ -864,32 +931,55 @@
 				</section>
 
 				<section>
-					<p class="plot-title-1">
+
+					<p class="plot-title-1-en">
 						Tasa de inflación energética en 
 						<span class="es-span">Expaña</span>
 						y
 						<span class="pt-span">Portugal</span>
 					</p>
+
+					<div class="checkbox-nrg">
+
+						<div>
+							  <input type="checkbox" class="checkboxNRG" value="1" checked/>
+							  <label class="check-label-nrg">Fase 1: Pre-crisis</label>
+						</div>
+
+						<div>
+							  <input type="checkbox" class="checkboxNRG" value="2"/>
+							  <label class="check-label-nrg">Fase 2: Crisis</label>
+						</div>
+
+						<div>
+							  <input type="checkbox" class="checkboxNRG" value="3"/>
+							  <label class="check-label-nrg">Fase 3: EXIB</label>
+						</div>
+
+					</div>
+
 					<div id="containerNRG"></div>
-					<!-- <script src="js/d3.v7.min.js"></script> -->
+
 					<script type="module">
 
 						// Define date constants
-						const startNRG = "2019-06-01";
-						const intervNRG = "2022-06-15";
-						const endNRG = "2023-09-01";
+						const startNRG = "2019-06-01",
+							intervNRG = "2022-06-01", 
+							endNRG = "2023-09-01";
 
 						// Import and filter data
-						const rawInfl = await d3.csv("data/inflation.csv");
-						const infl = rawInfl
-						.filter(
-							(d) => Date.parse(d.date) >= Date.parse(startNRG)
-							& Date.parse(d.date) <= Date.parse(endNRG)
-							);
+						const rawInfl = await d3.csv("data/inflation.csv"),
+							phase1 = rawInfl.filter((d) => d.outcome == "NRG" & d.phase == 1),
+							phase2 = rawInfl.filter((d) => d.outcome == "NRG" & d.phase == 2),
+							phase3 = rawInfl.filter((d) => d.outcome == "NRG" & d.phase == 3);
+
+						const group1 = d3.group(phase1, d => d.country),
+							group2 = d3.group(phase2, d => d.country),
+							group3 = d3.group(phase3, d => d.country);
 						
 						// Declare the chart dimensions and margins
 						const widthNRG = 900, 
-							heightNRG = 500, 
+							heightNRG = 450, 
 							marginTopNRG = 30, 
 							marginRightNRG = 30, 
 							marginBottomNRG = 30, 
@@ -910,16 +1000,6 @@
 
 						const gNRG = svgNRG.append("g")
 						    .attr("transform", `translate(${marginLeftNRG}, ${marginTopNRG})`);
-
-						const esLine = d3.line()
-						    .curve(d3.curveLinear)
-						    .x((d) => xNRG(Date.parse(d.date)))
-						    .y((d) => yNRG(d.ES_NRG));
-
-						const ptLine = d3.line()
-						    .curve(d3.curveLinear)
-						    .x((d) => xNRG(Date.parse(d.date)))
-						    .y((d) => yNRG(d.PT_NRG));
 
 						gNRG.append("g")
 						    .attr("transform", `translate(0,${heightNRG - marginBottomNRG/2})`)
@@ -956,17 +1036,17 @@
 
 						gNRG.append("text")
 							.attr("x", xNRG(Date.parse(intervNRG))-10)
-							.attr("y", 400)
+							.attr("y", 375)
 							.style("text-anchor", "end")
-							.text("IBEX")
+							.text("EXIB")
 							.attr("font-size", "20px")
 							.attr("font-family", "Nunito sans")
 						
 						gNRG.append("text")
 							.attr("x", xNRG(Date.parse(intervNRG))-10)
-							.attr("y", 425)
+							.attr("y", 400)
 							.style("text-anchor", "end")
-							.text("comienza")
+							.text("Comienza")
 							.attr("font-size", "20px")
 							.attr("font-family", "Nunito sans")
 
@@ -997,45 +1077,114 @@
 							.attr('x', widthNRG - marginRightNRG)
 							.attr('y', 0);
 
-						length = (path) => d3.create("svg:path").attr("d", path).node().getTotalLength();
-						const lNRG = length(esLine(infl));
+						function drawLine(d){
+							  return d3.line()
+							    .x(function(d) { return xNRG(Date.parse(d.date)); })
+							    .y(function(d) { return yNRG(+d.value); })
+							    (d[1])
+							};
 
-						gNRG.on("click", (event) => {
-							
-						})
+						const lineNRG = d3.line()
+							.x(d => xNRG(Date.parse(d.date)))
+							.y(d => yNRG(d.value))
+
+						length = (path) => d3.create("svg:path").attr("d", path).node().getTotalLength();
+						const l1 = length(lineNRG(phase1)),
+							l2 = length(lineNRG(phase2)),
+							l3 = length(lineNRG(phase3));
 
 						var colorNRG = d3.scaleOrdinal()
 							.domain("ES", "PT")
-							.range(["#d11e1e", "#30a956"])
+							.range(["#d11e1e", "#30a956"]);
 
-						gNRG.append("g")
-						    .append("path")
-						    .datum(infl)
-						    .style("fill", "none")
-						    .style("stroke", "#d11e1e")
-						    .style("stroke-width", 2.5)
-						    .attr("stroke-linejoin", "round")
-						    .attr("stroke-linecap", "round")
-						    .attr("d", esLine);
+						gNRG.selectAll(".line")
+							.data(group1)
+							.enter()
+							.append("path")
+							  	.attr("class", d => "phase-1")
+								.attr("stroke-dasharray", `0,${l1}`)
+								.attr("stroke-linejoin", "round")
+						    	.attr("stroke-linecap", "round")
+						    	.attr("d", drawLine)
+						    	.style("fill", "none")
+						    	.style("stroke", function(d){ return colorNRG(d[0]) })
+						    	.style("stroke-width", 2.5)
+								.style("opacity", 1);
+						
+						gNRG.selectAll(".line")
+							.data(group2)
+							.enter()
+							.append("path")
+							  	.attr("class", d => "phase-2")
+								.attr("stroke-dasharray", `0,${l2}`)
+								.attr("stroke-linejoin", "round")
+						    	.attr("stroke-linecap", "round")
+						    	.attr("d", drawLine)
+						    	.style("fill", "none")
+						    	.style("stroke", function(d){ return colorNRG(d[0]) })
+						    	.style("stroke-width", 2.5)
+								.style("opacity", 1);
 
-						gNRG.append("g")
-						    .append("path")
-						    .datum(infl)
-						    .style("fill", "none")
-						    .style("stroke", "#30a956")
-						    .style("stroke-width", 2.5)
-						    .attr("stroke-linejoin", "round")
-						    .attr("stroke-linecap", "round")
-						    .attr("d", ptLine);
+						gNRG.selectAll(".line")
+							.data(group3)
+							.enter()
+							.append("path")
+							  	.attr("class", d => "phase-3")
+								.attr("stroke-dasharray", `0,${l3}`)
+								.attr("stroke-linejoin", "round")
+						    	.attr("stroke-linecap", "round")
+						    	.attr("d", drawLine)
+						    	.style("fill", "none")
+						    	.style("stroke", function(d){ return colorNRG(d[0]) })
+						    	.style("stroke-width", 2.5)
+								.style("opacity", 1);
+
+						function update() {
+
+							d3.selectAll(".checkboxNRG").each(function(d) {
+
+								const cb = d3.select(this),
+									grp = cb.property("value");
+							
+								if(cb.property("checked")){ 
+
+									gNRG.selectAll(".phase-"+grp)
+											.style("opacity", 1)
+										.transition()
+										.duration(2000)
+											.attr("stroke-dasharray", `${l1},${l1}`)
+
+								} else {
+									
+									gNRG.selectAll(".phase-"+grp)
+										.transition()
+										.duration(750)
+											.attr("stroke-dasharray", `$0,${l1}`)
+											.style("opacity", 0)
+
+								}
+							})
+						}	
+
+						d3.selectAll(".checkboxNRG").on("change", update);
+						
+						update();
 
 					    containerNRG.append(svgNRG.node());
 
+						d3.select("#containerNRG")
+    						.append("p")
+    						.text("Fuente: Eurostat.")
+    						.attr("class", "plot-source")
+
 					</script>
+
 				</section>
 
 				<section>
+
 					<h2 class="slide-title-4">
-						La IBEX: una 
+						La EXIB: una 
 						<span style="font-weight: 400;">medida efectiva</span> 
 						que destaca las
 						<span style="font-weight: 400;">limitaciones del PVPC</span>
@@ -1046,32 +1195,37 @@
 						<p class="bss-mail">m.haroruiz@gmail.com</p>
 						<p class="bss-web">theprior.xyz</p>
 					</div>
+
 				</section>
 
 				<section>
-					<h2 class="slide-title">References</h2>
+
+					<h2 class="slide-title">Bibliografía</h2>
+
 					<ul class="references">
 						<li>Abadie, A., 2021. Using synthetic controls: Feasibility, data requirements, and methodological aspects. Journal of Economic Literature 59, 391–425. doi:10.1257/jel.20191450.</li>
 						<li>Abadie, A., Diamond, A., Hainmueller, J., 2010. Synthetic control methods for comparative case studies: Estimating the effect of California’s tobacco control program. Journal of the American Statistical Association 105, 493–505. doi:10.1198/jasa.2009.ap08746.</li>
 						<li>Abadie, A., Gardeazabal, J., 2003. The economic costs of conflict: A case study of the Basque Country. American Economic Review 93, 113–132. doi:10.1257/000282803321455188.</li>
 						<li>Barsky, R.B., Kilian, L., 2002. Oil and the macroeconomy since the 1970s. Journal of Economic Perspectives 18, 115–134. doi:10.3386/w10855.</li>
-						<li></li>
 					</ul>
+
 				</section>
 
 				<section>
-					<h2 class=" slide-title">References</h2>
+
+					<h2 class=" slide-title">Bibliografía</h2>
+
 					<ul class="references">
 						<li>Chernozhukov, V., Wuthrich, K., Zhu, Y., 2022. Practical and robust t-test based inference for synthetic control and related methods. arxiv e-prints. arXiv preprint arXiv:1812.10820v4</li>
 						<li>Clark, T.E., Terry, S.J., 2010. Time variation in the inflation passthrough of energy prices. Journal of Money, Credit and Banking 42, 1419–1433. doi:10.2139/ssrn.1349851.</li>
 						<li>Ferman, B., Pinto, C., Possebom, V., 2020. Cherry picking with synthetic controls. Journal of Policy Analysis and Management 39, 510–532. doi:10. 1002/pam.22206.</li>
 						<li>Kilian, L., Zhou, X., 2022. The impact of rising oil prices on US inflation and inflation expectations in 2020–23. Energy Economics 113, 106228. doi:10.1016/j.eneco.2022.106228.</li>
-						<li></li>
 					</ul>
+
 				</section>
 
 				<section class="chapter" data-transition="slide" data-background-color="rgb(35, 35, 35)">
-					<h1>Appendix</h1>
+					<h1>Apéndice</h1>
 				</section>
 
 				<section>
@@ -1091,17 +1245,22 @@
 				</section>
 
 				<section>
+
 					<h2 class="slide-title">Synthetic controls</h2>
+
 					<ul class="list-3">
 						<li>Introduced by Abadie and Gardeazabal (2003),  Abadie et al. (2010)</li>
 						<li class="fragment">Setup: One treated unit; several untreated units</li>
 						<li class="fragment">Counterfactual is estimated as weighted average of untreated units → synthetic control unit</li>
 						<li class="fragment">Similar units receive larger weights, vv</li>
 					</ul>
+
 				</section>
 
 				<section>
+
 					<h2 class="slide-title">Data and specifications</h2>
+
 					<ul class="list-1">
 						<li class="fragment">Control pool: 23 European countries</li>
 						<li class="fragment">Portugal is removed to estimate effect for Spain, vv</li>
@@ -1110,15 +1269,19 @@
 						<li class="fragment">June 2022 is removed from the analysis</li>
 						<li class="fragment">Inference according to Chernozhukov et al. (2022)</li>
 					</ul>
+
 				</section>
 
 				<section>
+
 					<h2 class="slide-title-3">Synthetic controls (Abadie, 2021)</h2>
+
 					<p class="fragment sc-bullet">We observe 
 						<span>\((J+1) \in \mathbb{N}\)</span> 
 						units over period 
 						<span>\(T \in \mathbb{N}\)</span>
 					</p>
+
 					<p class="fragment sc-bullet">
 						<span>\(J_{1}\)</span> 
 						is assigned treatment at 
@@ -1127,12 +1290,14 @@
 						<span>\(T_{1} = T-T_{0}\)</span> 
 						periods
 					</p>
+
 					<p class="fragment sc-bullet">
 						Our goal is to estimate 
 						<span>\(\alpha_{1,t}=Y_{1,t}^{1}-Y_{1,t}^{0}\)</span>
 						, for 
 						<span>\(t \in \{T_{0}+1, ..., T\}\)</span>
 					</p>
+
 					<p class="fragment sc-bullet">
 						Since 
 						<span>\(Y_{1,t}^{1}\)</span> 
@@ -1141,31 +1306,36 @@
 						to estimate 
 						<span>\(\alpha_{1,t}\)</span>
 					</p>
+
 					<p class="fragment sc-bullet">
 						Synthetic controls produce 
 						<span>\(\widehat{Y}_{1,t}^{0}=\sum_{j=2}^{J+1} \widehat{w}_{j} Y_{j,t}\)</span> 
 						for each 
 						<span>\(t \in \{1,...,T\}\)</span>
 					</p>
+
 					<p class="fragment sc-bullet">
 						<span>\(\mathbf{\widehat{W}(V)}\)</span> 
 						is a vector of optimized weights assigned to each control unit
 					</p>
+
 					<p class="fragment sc-bullet">
 						<span>\(\mathbf{\widehat{V}}\)</span> 
 						is a vector of optimized weights assigned to each predictor
 					</p>
+
 				</section>
 
 			</div>
+
 		</div>
+
 		<script src="dist/reveal.js"></script>
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
 		<script src="plugin/math/math.js"></script>
-		<script type="module">
-		</script>
+		<script src="js/d3.v7.min.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
@@ -1177,5 +1347,7 @@
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
 			});
 		</script>
+
 	</body>
+
 </html>

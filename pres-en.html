@@ -7,38 +7,38 @@
 
 		<title>IBEX - RConf 2023</title>
 
-		<!-- <link rel="stylesheet" href="dist/reset.css"> -->
 		<link rel="stylesheet" href="dist/reveal.css">
 		<link rel="stylesheet" href="dist/theme/simple.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Serif:wght@300;400;500;600&family=Open+Sans:wght@200;300;400;500;600&family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&family=Nunito+Sans:wght@300;400;500;600&family=Kanit:wght@200;300;400;500;600&family=Outfit:wght@100;200;300;400;500;600&family=Sometype+Mono:wght@400;500;600&display=swap" rel="stylesheet">	
-		<!-- Theme used for syntax highlighted code -->
-		<!-- <link rel="stylesheet" href="plugin/highlight/monokai.css"> -->
 		<link rel="stylesheet" href="styles/style.css">
 	</head>
 	<body>
-
-		<script src="js/d3.v7.min.js"></script>
 
 		<div class="reveal">
 
 			<div class="slides">
 
 				<section>
+
 					<h2 class="main-title">The effects of the Iberian exception on inflation:</h2>
+
 					<h4 class="main-subtitle">A synthetic-controls approach</h4>
+
 					<p class="authors" id="first-author">
 						Miguel 
 						<span style="font-weight: 400;">
 							Haro Ruiz
 						</span>
 					</p>
+
 					<p class="authors">Christoph
 						<span style="font-weight: 400;">
 							Schult
 						</span> 
 					</p>
+
 					<p class="authors">Christoph
 						<span style="font-weight: 400;">
 							Wunder
@@ -48,17 +48,19 @@
 				</section>
 
 				<section>
-					<p class="plot-title-1">
+
+					<p class="plot-title-1-en">
 						<span class="gas-span">average EU</span>
 						electricity prices
 						<select id="selectOption">
 							<option class="selectedItem" value="before">before</option>
 							<option class="selectedItem" value="during">during</option>
 						</select>
-						the Energy crisis
+						the energy crisis
 					</p>
+
 					<div id="containerCTX"></div>
-					<!-- <script src="js/d3.v7.min.js"></script> -->
+
 					<script type="module">
 
 						const rawElecGas = await d3.csv("data/elec_gas.csv");
@@ -76,10 +78,10 @@
 
 						// Declare the chart dimensions and margins
 						const widthCTX = 900, 
-							heightCTX = 500, 
+							heightCTX = 450, 
 							marginTopCTX = 15, 
 							marginRightCTX = 45, 
-							marginBottomCTX = 50, 
+							marginBottomCTX = 25, 
 							marginLeftCTX = 80;
 						
 						// Declare the positional encodings
@@ -262,9 +264,14 @@
 								.duration(1000)
 								.style("opacity", 1)
 
-							})
+						})
 						
 					    containerCTX.append(svgCTX.node());
+
+						d3.select("#containerCTX")
+    						.append("p")
+    						.text("Source: Energy-charts, Barchart, own calculations.")
+    						.attr("class", "plot-source")
 
 					</script>
 
@@ -275,47 +282,67 @@
 				</section>
 
 				<section>
+
 					<h2 class="slide-title-2">The IBEX</h2>
+
 					<p class="fragment slide-text-2">Begins on June 15, 2022</p>
-					<p class="fragment slide-text-2">To <b>decouple</b> price of electricity from int'l gas prices:</p>
+					
+					<p class="fragment slide-text-2">To <b>decouple</b> the price of electricity from int'l gas prices:</p>
+
 					<ol class="list-2">
 						<li class="fragment">Sets limit to the price of gas-powered electricity</li>
 						<li class="fragment">Adjustment mechanism covers for potential loses</li>
 						<li class="fragment">Paid by consumers + exports to France</li>
 					</ol>
+
 				</section>
 
 				<section>
+
 					<h2 class="slide-title-2">The exception of Iberia</h2>
+					
 					<ul class="list-1">
+
 						<p class="fragment slide-text-1" data-fragment-index="1">Strategies against energy crisis accros EU:</p>
+						
 						<ul class="sublist-1">
 							<li class="fragment" data-fragment-index="2">Tax reductions</li>
 							<li class="fragment" data-fragment-index="2">Direct transfers</li>
 							<li class="fragment" data-fragment-index="2">Retail market regulation</li>
 						</ul>
+
 						<p class="fragment slide-text-1" data-fragment-index="3">IBEX: 
 							<span style="font-weight: 400;">
 							only measure</span> to intervene wholesale market
 						</p>
+
 					</ul>
+
 				</section>
 
 				<section>
+
 					<h2 class="slide-title-2">Experimental setup</h2>
+
 					<ul class="list-1">
+
 						<p class="slide-text-1 fragment" data-fragment-index="1">The IBEX presents a 
 							<span style="font-weight: 400;">natural experiment</span>
 						</p>
+
 						<ul class="sublist-1">
 							<li class="fragment" data-fragment-index="1">Iberian market operates under new rules;</li>
 							<li class="fragment" data-fragment-index="2">Other EU countries continue to follow directives</li>
 						</ul>
+
 						<p class="slide-text fragment" data-fragment-index="3">Research goal:</p>
+
 						<ul class="sublist-1">
 							<p class="fragment slide-text-2" data-fragment-index="3">Estimating the causal impact of the IBEX on prices</p>
 						</ul>
+
 					</ul>
+
 				</section>
 
 				<section class="chapter" data-transition="slide" data-background-color="rgb(35, 35, 35)">
@@ -323,65 +350,78 @@
 				</section>
 
 				<section>
+
 					<h2 class="slide-title">Methodology</h2>
+
 					<ul class="list-4">
+
 						<p class="slide-text-1">Counterfactual estimation via 
 							<span style="font-weight: 400;">Synthetic controls</span>
 						</p>
+
 						<p class="fragment slide-text-1" data-fragment-index="1">Outcomes of interest</p>
 						<ul class="sublist-4">
+
 							<li class="fragment" data-fragment-index="1">
 								<span style="font-weight: 400;">DAP:</span> 
 								Day-ahead price of electricity
 							</li>
+
 							<li class="fragment" data-fragment-index="2">
 								<span style="font-weight: 400;">NRG:</span> 
 								Energy-only Consumer Price Index (CPI)
 							</li>
+
 							<li class="fragment" data-fragment-index="3">
 								<span style="font-weight: 400;">xNRG:</span>
 								 Non-energy CPI
-								</li>
+							</li>
+
 							<li class="fragment" data-fragment-index="4">
 								<span style="font-weight: 400;">CP00:</span> 
 								All-items CPI
 							</li>
+
 						</ul>
+
 					</ul>
+
 				</section>
 
-				
 				<section class="chapter" data-transition="slide" data-background-color="rgb(35, 35, 35)">
 					<h1>Results</h1>
 				</section>
 
 				<section>
+
 					<p class="plot-title-2">
 						<span class="obs-span">Observed</span>
 						and 
 						<span class="synth-span">synthetic</span>
 						all-items CPI series for Spain
 					</p>
+
 					<div id="containerSC"></div>
-					<!-- <script src="js/d3.v7.min.js"></script> -->
+
 					<script type="module">
 
 						const rawSCSeries = await d3.csv("data/sc_series.csv");
 
 						// Declare the chart dimensions and margins
-						const widthSC = 900;
-						const heightSC = 500;
-						const marginTopSC = 30;
-						const marginRightSC = 30;
-						const marginBottomSC = 60;
-						const marginLeftSC = 60;
+						const widthSC = 900, 
+							heightSC = 470, 
+							marginTopSC = 30, 
+							marginRightSC = 30, 
+							marginBottomSC = 35, 
+							marginLeftSC = 60;
 
-						const interv_date = "2022-06-01";
-						const start_date = "2013-01-01";
-						const end_date = "2023-03-01";
-						const SCSeries = rawSCSeries.filter((d) => d.treated == "ES" & d.outcome == "CP00");
-						const preSeries = SCSeries.filter((d) => Date.parse(d.date) <= Date.parse(interv_date));
-						const postSeries = SCSeries.filter((d) => Date.parse(d.date) >= Date.parse(interv_date));
+						const interv_date = "2022-06-01", 
+							start_date = "2013-01-01", 
+							end_date = "2023-03-01";
+						 
+						const SCSeries = rawSCSeries.filter((d) => d.treated == "ES" & d.outcome == "CP00"), 
+							preSeries = SCSeries.filter((d) => Date.parse(d.date) <= Date.parse(interv_date)), 
+							postSeries = SCSeries.filter((d) => Date.parse(d.date) >= Date.parse(interv_date));
 
 						// Declare the positional encodings
 						const xSC = d3.scaleUtc()
@@ -542,70 +582,86 @@
 					
 					    containerSC.append(svgSC.node());
 
+						d3.select("#containerSC")
+    						.append("p")
+    						.text("Source: Eurostat, own calculations.")
+    						.attr("class", "plot-source")
+
 					</script>
+
 				</section>
 
 				<section>
+
 					<p class="plot-title-2">
 						<span class="obs-span">Observed</span>
 						and 
 						<span class="synth-span">synthetic</span>
 						all-items CPI series for Spain
 					</p>
-						<img class = "img1" src="images/CP00_es_en.png">
+						
+					<img class = "img1" src="images/CP00_es_en.png">
+
+
 				</section>
 
 				<section>
+
 					<p class="plot-title-3">
 						Average Treatment Effect:
 						<span class="es-span">Spain</span>
 						and
 						<span class="pt-span">Portugal</span>
 					</p>
+
 					<div class="legend-box">
 
 						<p class="plot-subtitle-3">90% confidence intervals</p>	
 
-						<div class="checkbox-ate">
+						<div class="checkbox-att">
+
 							<div>
 						  		<input type="checkbox" class="checkbox" value="DAP" checked />
-						  		<label class="check-label">DAP</label>
+						  		<label class="check-label-att">DAP</label>
 							</div>
+
 							<div>
 						  		<input type="checkbox" class="checkbox" value="NRG"/>
-						  		<label class="check-label">NRG</label>
+						  		<label class="check-label-att">NRG</label>
 							</div>
+
 							<div>
 						  		<input type="checkbox" class="checkbox" value="xNRG"/>
-						  		<label class="check-label">xNRG</label>
+						  		<label class="check-label-att">xNRG</label>
 							</div>
+
 							<div>
 						  		<input type="checkbox" class="checkbox" value="CP00"/>
-						  		<label class="check-label">CP00</label>
+						  		<label class="check-label-att">CP00</label>
 							</div>
+
 						</div>
 					
 					</div>
 					
-
 					<div id="containerATT"></div>
-					<!-- <script src="js/d3.v7.min.js"></script> -->
+
 					<script type="module">
 
 						// Import and filter data
-						const rawResults = await d3.csv("data/results_1.csv"),
+						const rawResults = await d3.csv("data/results.csv"),
 							resultsDAP = rawResults.filter((d) => d.outcome == "DAP"),
 							resultsNRG = rawResults.filter((d) => d.outcome == "NRG"),
 							resultsxNRG = rawResults.filter((d) => d.outcome == "xNRG"),
 							resultsCP00 = rawResults.filter((d) => d.outcome != "CP00");
 
 						// Declare the chart dimensions and margins
-						const widthATT = 900;
-						const heightATT = 400;
-						const marginTopATT = 50;
-						const marginRightATT = 30;
-						const marginBottomATT = 60;
-						const marginLeftATT = 70;
+						const widthATT = 900, 
+							heightATT = 400, 
+							marginTopATT = 50, 
+							marginRightATT = 30, 
+							marginBottomATT = 60, 
+							marginLeftATT = 70;
 
 						// Declare the positional encodings
 						const xATT = d3.scaleLinear()
@@ -797,24 +853,27 @@
 
 					    containerATT.append(svgATT.node());
 
-					</script>
-				</section>
+						d3.select("#containerATT")
+    						.append("p")
+    						.text("Source: Own calculations.")
+    						.attr("class", "plot-source")
 
-				<!-- <section>
-					<div class="r-stack">
-						<img src="images/allResults1.png" width="926" height="550">
-						<img class="fragment" src="images/allResults2.png" width="926" height="550">
-					  </div>
-				</section> -->
+					</script>
+
+				</section>
 
 				<section class="chapter" data-transition="slide" data-background-color="rgb(35, 35, 35)">
 					<h1>Discussion</h1>
 				</section>
 
 				<section>
+
 					<h2 class="slide-title-3">What explains the difference?</h2>
+
 					<ul class="list-4">
+
 						<p class="fragment slide-text" data-fragment-index="1">Spain</p>
+
 						<ul class="sublist-4">
 							<li class="fragment" data-fragment-index="1">PVPC is indexed by day-ahead price</li>
 							<li class="fragment" data-fragment-index="1">Serves ~40% of households and firms</li>
@@ -823,78 +882,110 @@
 								between DAP and NRG
 							</li>
 						</ul>
+
 						<p class="fragment slide-text" data-fragment-index="3">Portugal</p>
+
 						<ul class="sublist-4" data-fragment-index="3">
 							<li class="fragment" data-fragment-index="3">Retailers favor longer-term contracts</li>
 							<li class="fragment" data-fragment-index="4">
 								<span style="font-weight: 400;">Slower link</span> 
 								between DAP and NRG
 							</li>
+
 						</ul>
+
 					</ul>
+					
 				</section>
 
 				<section>
+
 					<h2 class="slide-title-3">The IBEX is responsible for...</h2>
+
 						<ul class="list-1">
+
 							<p class="fragment slide-text-1" data-fragment-index="1"> -40% in wholesale electricity price</p>
+							
 							<p class="fragment slide-text-1" data-fragment-index="2">
 								<span style="font-weight: 400;">
 								Spain: immediate and strong effect on CPI
 							</span> 
 							</p>
+
 							<ul class="sublist-1">
 								<li class="fragment" data-fragment-index="2"> -19 p.p. in energy inflation</li>
 								<li class="fragment" data-fragment-index="2"> -3.5 p.p. in overall inflation</li>
 							</ul>
+
 							<p class="fragment slide-text-1" data-fragment-index="3">
 								<span style="font-weight: 400;">
-								Portugal: 
+								Portugal: Effect with 6-month delay
 								</span>
-								
-								<span style="font-weight: 400;">
-									Effect with 6-month delay
-								</span>
-								
 							</p>
+
 							<ul class="sublist-1">
 								<li class="fragment" data-fragment-index="3"> -12 p.p. in energy inflation in 2023</li>
 								<li class="fragment" data-fragment-index="3">No effect on overall inflation</li>
 							</ul>
+
 						</ul>
+
 				</section>
 
 				<section>
-					<p class="plot-title-1">
+
+					<p class="plot-title-1-en">
 						Energy-only inflation in 
 						<span class="es-span">Spain</span>
 						and
 						<span class="pt-span">Portugal</span>
 					</p>
+
+					<div class="checkbox-nrg">
+
+						<div>
+							  <input type="checkbox" class="checkboxNRG" value="1" checked/>
+							  <label class="check-label-nrg">Phase 1: Pre-crisis</label>
+						</div>
+
+						<div>
+							  <input type="checkbox" class="checkboxNRG" value="2"/>
+							  <label class="check-label-nrg">Phase 2: Crisis</label>
+						</div>
+
+						<div>
+							  <input type="checkbox" class="checkboxNRG" value="3"/>
+							  <label class="check-label-nrg">Phase 3: IBEX</label>
+						</div>
+
+					</div>
+
 					<div id="containerNRG"></div>
-					<!-- <script src="js/d3.v7.min.js"></script> -->
+
 					<script type="module">
 
 						// Define date constants
-						const startNRG = "2019-06-01";
-						const intervNRG = "2022-06-15";
-						const endNRG = "2023-09-01";
+						const startNRG = "2019-06-01",
+							intervNRG = "2022-06-01", 
+							endNRG = "2023-09-01";
 
 						// Import and filter data
-						const rawInfl = await d3.csv("data/inflation.csv");
-						const infl = rawInfl
-						.filter(
-							(d) => Date.parse(d.date) >= Date.parse(startNRG)
-							& Date.parse(d.date) <= Date.parse(endNRG)
-							);
+						const rawInfl = await d3.csv("data/inflation.csv"),
+							phase1 = rawInfl.filter((d) => d.outcome == "NRG" & d.phase == 1),
+							phase2 = rawInfl.filter((d) => d.outcome == "NRG" & d.phase == 2),
+							phase3 = rawInfl.filter((d) => d.outcome == "NRG" & d.phase == 3);
+
+						const group1 = d3.group(phase1, d => d.country),
+							group2 = d3.group(phase2, d => d.country),
+							group3 = d3.group(phase3, d => d.country);
 						
 						// Declare the chart dimensions and margins
-						const widthNRG = 900;
-						const heightNRG = 500;
-						const marginTopNRG = 30;
-						const marginRightNRG = 30;
-						const marginBottomNRG = 30;
-						const marginLeftNRG = 40;
+						const widthNRG = 900, 
+							heightNRG = 450, 
+							marginTopNRG = 30, 
+							marginRightNRG = 30, 
+							marginBottomNRG = 30, 
+							marginLeftNRG = 40;
 
 						// Declare the positional encodings
 						const xNRG = d3.scaleUtc()
@@ -911,16 +1002,6 @@
 
 						const gNRG = svgNRG.append("g")
 						    .attr("transform", `translate(${marginLeftNRG}, ${marginTopNRG})`);
-
-						const esLine = d3.line()
-						    .curve(d3.curveLinear)
-						    .x((d) => xNRG(Date.parse(d.date)))
-						    .y((d) => yNRG(d.ES_NRG));
-
-						const ptLine = d3.line()
-						    .curve(d3.curveLinear)
-						    .x((d) => xNRG(Date.parse(d.date)))
-						    .y((d) => yNRG(d.PT_NRG));
 
 						gNRG.append("g")
 						    .attr("transform", `translate(0,${heightNRG - marginBottomNRG/2})`)
@@ -998,43 +1079,112 @@
 							.attr('x', widthNRG - marginRightNRG)
 							.attr('y', 0);
 
-						length = (path) => d3.create("svg:path").attr("d", path).node().getTotalLength();
-						const lNRG = length(esLine(infl));
+						function drawLine(d){
+							  return d3.line()
+							    .x(function(d) { return xNRG(Date.parse(d.date)); })
+							    .y(function(d) { return yNRG(+d.value); })
+							    (d[1])
+							};
 
-						gNRG.on("click", (event) => {
-							
-						})
+						const lineNRG = d3.line()
+							.x(d => xNRG(Date.parse(d.date)))
+							.y(d => yNRG(d.value))
+
+						length = (path) => d3.create("svg:path").attr("d", path).node().getTotalLength();
+						const l1 = length(lineNRG(phase1)),
+							l2 = length(lineNRG(phase2)),
+							l3 = length(lineNRG(phase3));
 
 						var colorNRG = d3.scaleOrdinal()
 							.domain("ES", "PT")
-							.range(["#d11e1e", "#30a956"])
+							.range(["#d11e1e", "#30a956"]);
 
-						gNRG.append("g")
-						    .append("path")
-						    .datum(infl)
-						    .style("fill", "none")
-						    .style("stroke", "#d11e1e")
-						    .style("stroke-width", 2.5)
-						    .attr("stroke-linejoin", "round")
-						    .attr("stroke-linecap", "round")
-						    .attr("d", esLine);
+						gNRG.selectAll(".line")
+							.data(group1)
+							.enter()
+							.append("path")
+							  	.attr("class", d => "phase-1")
+								.attr("stroke-dasharray", `0,${l1}`)
+								.attr("stroke-linejoin", "round")
+						    	.attr("stroke-linecap", "round")
+						    	.attr("d", drawLine)
+						    	.style("fill", "none")
+						    	.style("stroke", function(d){ return colorNRG(d[0]) })
+						    	.style("stroke-width", 2.5)
+								.style("opacity", 1);
+						
+						gNRG.selectAll(".line")
+							.data(group2)
+							.enter()
+							.append("path")
+							  	.attr("class", d => "phase-2")
+								.attr("stroke-dasharray", `0,${l2}`)
+								.attr("stroke-linejoin", "round")
+						    	.attr("stroke-linecap", "round")
+						    	.attr("d", drawLine)
+						    	.style("fill", "none")
+						    	.style("stroke", function(d){ return colorNRG(d[0]) })
+						    	.style("stroke-width", 2.5)
+								.style("opacity", 1);
 
-						gNRG.append("g")
-						    .append("path")
-						    .datum(infl)
-						    .style("fill", "none")
-						    .style("stroke", "#30a956")
-						    .style("stroke-width", 2.5)
-						    .attr("stroke-linejoin", "round")
-						    .attr("stroke-linecap", "round")
-						    .attr("d", ptLine);
+						gNRG.selectAll(".line")
+							.data(group3)
+							.enter()
+							.append("path")
+							  	.attr("class", d => "phase-3")
+								.attr("stroke-dasharray", `0,${l3}`)
+								.attr("stroke-linejoin", "round")
+						    	.attr("stroke-linecap", "round")
+						    	.attr("d", drawLine)
+						    	.style("fill", "none")
+						    	.style("stroke", function(d){ return colorNRG(d[0]) })
+						    	.style("stroke-width", 2.5)
+								.style("opacity", 1);
+
+						function update() {
+
+							d3.selectAll(".checkboxNRG").each(function(d) {
+
+								const cb = d3.select(this),
+									grp = cb.property("value");
+							
+								if(cb.property("checked")){ 
+
+									gNRG.selectAll(".phase-"+grp)
+											.style("opacity", 1)
+										.transition()
+										.duration(2000)
+											.attr("stroke-dasharray", `${l1},${l1}`)
+
+								} else {
+									
+									gNRG.selectAll(".phase-"+grp)
+										.transition()
+										.duration(750)
+											.attr("stroke-dasharray", `$0,${l1}`)
+											.style("opacity", 0)
+
+								}
+							})
+						}	
+
+						d3.selectAll(".checkboxNRG").on("change", update);
+						
+						update();
 
 					    containerNRG.append(svgNRG.node());
 
+						d3.select("#containerNRG")
+    						.append("p")
+    						.text("Source: Eurostat.")
+    						.attr("class", "plot-source")
+
 					</script>
+
 				</section>
 
 				<section>
+
 					<h2 class="slide-title-4">
 						The IBEX: An 
 						<span style="font-weight: 400;">effective policy</span> 
@@ -1048,28 +1198,33 @@
 						<p class="bss-mail">m.haroruiz@gmail.com</p>
 						<p class="bss-web">theprior.xyz</p>
 					</div>
+
 				</section>
 
 				<section>
+
 					<h2 class="slide-title">References</h2>
+
 					<ul class="references">
 						<li>Abadie, A., 2021. Using synthetic controls: Feasibility, data requirements, and methodological aspects. Journal of Economic Literature 59, 391–425. doi:10.1257/jel.20191450.</li>
 						<li>Abadie, A., Diamond, A., Hainmueller, J., 2010. Synthetic control methods for comparative case studies: Estimating the effect of California’s tobacco control program. Journal of the American Statistical Association 105, 493–505. doi:10.1198/jasa.2009.ap08746.</li>
 						<li>Abadie, A., Gardeazabal, J., 2003. The economic costs of conflict: A case study of the Basque Country. American Economic Review 93, 113–132. doi:10.1257/000282803321455188.</li>
 						<li>Barsky, R.B., Kilian, L., 2002. Oil and the macroeconomy since the 1970s. Journal of Economic Perspectives 18, 115–134. doi:10.3386/w10855.</li>
-						<li></li>
 					</ul>
+
 				</section>
 
 				<section>
+
 					<h2 class=" slide-title">References</h2>
+
 					<ul class="references">
 						<li>Chernozhukov, V., Wuthrich, K., Zhu, Y., 2022. Practical and robust t-test based inference for synthetic control and related methods. arxiv e-prints. arXiv preprint arXiv:1812.10820v4</li>
 						<li>Clark, T.E., Terry, S.J., 2010. Time variation in the inflation passthrough of energy prices. Journal of Money, Credit and Banking 42, 1419–1433. doi:10.2139/ssrn.1349851.</li>
 						<li>Ferman, B., Pinto, C., Possebom, V., 2020. Cherry picking with synthetic controls. Journal of Policy Analysis and Management 39, 510–532. doi:10. 1002/pam.22206.</li>
 						<li>Kilian, L., Zhou, X., 2022. The impact of rising oil prices on US inflation and inflation expectations in 2020–23. Energy Economics 113, 106228. doi:10.1016/j.eneco.2022.106228.</li>
-						<li></li>
 					</ul>
+
 				</section>
 
 				<section class="chapter" data-transition="slide" data-background-color="rgb(35, 35, 35)">
@@ -1093,17 +1248,22 @@
 				</section>
 
 				<section>
+
 					<h2 class="slide-title">Synthetic controls</h2>
+
 					<ul class="list-3">
 						<li>Introduced by Abadie and Gardeazabal (2003),  Abadie et al. (2010)</li>
 						<li class="fragment">Setup: One treated unit; several untreated units</li>
 						<li class="fragment">Counterfactual is estimated as weighted average of untreated units → synthetic control unit</li>
 						<li class="fragment">Similar units receive larger weights, vv</li>
 					</ul>
+
 				</section>
 
 				<section>
+
 					<h2 class="slide-title">Data and specifications</h2>
+
 					<ul class="list-1">
 						<li class="fragment">Control pool: 23 European countries</li>
 						<li class="fragment">Portugal is removed to estimate effect for Spain, vv</li>
@@ -1112,15 +1272,19 @@
 						<li class="fragment">June 2022 is removed from the analysis</li>
 						<li class="fragment">Inference according to Chernozhukov et al. (2022)</li>
 					</ul>
+
 				</section>
 
 				<section>
+
 					<h2 class="slide-title-3">Synthetic controls (Abadie, 2021)</h2>
+
 					<p class="fragment sc-bullet">We observe 
 						<span>\((J+1) \in \mathbb{N}\)</span> 
 						units over period 
 						<span>\(T \in \mathbb{N}\)</span>
 					</p>
+
 					<p class="fragment sc-bullet">
 						<span>\(J_{1}\)</span> 
 						is assigned treatment at 
@@ -1129,12 +1293,14 @@
 						<span>\(T_{1} = T-T_{0}\)</span> 
 						periods
 					</p>
+
 					<p class="fragment sc-bullet">
 						Our goal is to estimate 
 						<span>\(\alpha_{1,t}=Y_{1,t}^{1}-Y_{1,t}^{0}\)</span>
 						, for 
 						<span>\(t \in \{T_{0}+1, ..., T\}\)</span>
 					</p>
+
 					<p class="fragment sc-bullet">
 						Since 
 						<span>\(Y_{1,t}^{1}\)</span> 
@@ -1143,31 +1309,35 @@
 						to estimate 
 						<span>\(\alpha_{1,t}\)</span>
 					</p>
+
 					<p class="fragment sc-bullet">
 						Synthetic controls produce 
 						<span>\(\widehat{Y}_{1,t}^{0}=\sum_{j=2}^{J+1} \widehat{w}_{j} Y_{j,t}\)</span> 
 						for each 
 						<span>\(t \in \{1,...,T\}\)</span>
 					</p>
+
 					<p class="fragment sc-bullet">
 						<span>\(\mathbf{\widehat{W}(V)}\)</span> 
 						is a vector of optimized weights assigned to each control unit
 					</p>
+
 					<p class="fragment sc-bullet">
 						<span>\(\mathbf{\widehat{V}}\)</span> 
 						is a vector of optimized weights assigned to each predictor
 					</p>
+
 				</section>
 
 			</div>
 		</div>
+
 		<script src="dist/reveal.js"></script>
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
 		<script src="plugin/math/math.js"></script>
-		<script type="module">
-		</script>
+		<script src="js/d3.v7.min.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
@@ -1178,6 +1348,9 @@
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
 			});
+
 		</script>
+
 	</body>
+
 </html>

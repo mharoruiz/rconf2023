@@ -159,22 +159,34 @@
     font-weight: 300;
 }
 
-.plot-title-1 {
+.plot-title-1-en {
     font-family: "Inter"; 
     font-size: 37px;
     text-align: left;
-    padding: 10px 0;
-    margin: 0;
+    margin: 5px 0 10px;
 }
-.plot-subtitle-1 {
+
+.plot-title-1-en select {
+    font-family: "Inter";
+    font-size: 35px;
+}
+
+.plot-title-1-es {
+    font-family: "Inter"; 
+    font-size: 37px;
+    text-align: left;
+    margin: 5px 0;
+}
+
+.plot-subtitle-1-es {
     font-family: "Inter"; 
     font-size: 25px;
     text-align: left;
     padding-left: 40px;
-    margin: 10px 0 10px;
+    margin: 10px 0 20px;
 }
 
-select {
+.plot-subtitle-1-es select {
     font-family: "Inter";
     font-size: 23px;
 }
@@ -206,6 +218,15 @@ select {
     height: 700px;
     margin: -80px 0 0 ;
 
+}
+
+.plot-source {
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 17.5px;
+    text-align: right;
+    color:#6e6e6e;
+    margin: 0;
+    padding: 0;
 }
 
 .gas-span {
@@ -264,7 +285,7 @@ ul .transparent {
     gap: 80px;
 }
 
-.checkbox-ate {
+.checkbox-att {
     display:flex;
     align-items: center;
     justify-content: space-around;
@@ -272,16 +293,35 @@ ul .transparent {
     margin: 10px auto;
     border: 0.5px solid #5b5b5b;
     border-radius: 5px;
-}
-
-.checkbox-ate {
     line-height: 0;
     margin: 10px 0;
 }
 
-.check-label {
+.check-label-att {
     font-size: 20px;
     margin: -15px 0 5px;
+    padding: 0;
+}
+
+.checkbox-nrg {
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 85%;
+    margin: 20px auto 10px;
+    border: 0.5px solid #5b5b5b;
+    border-radius: 5px;
+    line-height: 0;
+    padding: 20px auto;
+}
+
+.checkbox-nrg div {
+    padding: 5px 0;
+}
+
+.check-label-nrg {
+    font-size: 20px;
+    margin: -15px 0 10px;
     padding: 0;
 }
 
