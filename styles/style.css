@@ -361,3 +361,25 @@ ul .transparent {
     font-size: 25px;
     padding-bottom: 10px;
 }
+
+.pkg-name{
+    font-family: "Sometype Mono", monospace;
+}
+
+.image-flex {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    max-height: 300px;
+    margin: 20px;
+}
+
+.image-div {
+    width: 150px;
+}
+
+.image-div img {
+    object-fit: cover;
+    display: block;
+}
+
