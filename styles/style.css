@@ -370,8 +370,9 @@ ul .transparent {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
+    width: 70%;
     max-height: 300px;
-    margin: 20px;
+    margin: 20px auto;
 }
 
 .image-div {
