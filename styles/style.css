@@ -183,7 +183,7 @@
     font-family: "Inter"; 
     font-size: 37px;
     text-align: left;
-    margin: 10px 0 30px;
+    margin: 10px 0 15px;
 }
 
 .plot-title-3 {
@@ -221,6 +221,28 @@
     color: #a91ee1;
 }
 
+.textButton {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#showGas {
+    margin: 10px 100px;
+    padding: 5px;
+    font-family: "Inter";
+    font-size: 23px;
+    border: .5px solid #47ba19;
+    border-radius: 5px;
+    color: #47ba19;
+    background-color: white;
+}
+
+#selectOption:hover,
+#showGas:hover {
+    cursor: pointer;
+    background-color: rgb(240, 240, 240);
+}
+
 .obs-span {
     color:#cc594c;
 }
@@ -229,8 +251,24 @@
     color: #4c3cdc;
 }
 
-ul .transparent {
-    opacity: 0;
+.buttonsPanel {
+    display: flex;
+    justify-content: start;
+    margin: 5px 20px;
+}
+
+.buttons {
+    font-family: "Inter";
+    font-size: 20px;
+    background-color: white;
+    border-radius: 5px;
+    border: .5px solid black;
+    margin: 0 10px
+}
+
+.buttons:hover {
+    cursor: pointer;
+    background-color: rgb(240, 240, 240);
 }
 
 .es-span {
@@ -354,6 +392,11 @@ ul .transparent {
     font-size: 25px;
     margin-top: -20px;
 }
+
+.references li {
+    padding-bottom: 15px;
+}
+
 
 .sc-bullet {
     text-align: left;

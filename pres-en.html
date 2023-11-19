@@ -54,13 +54,19 @@
 						in the EU
 					</p>
 
-					<p class="plot-subtitle-1">
-						<select id="selectOption">
-							<option class="selectedItem" value="before">Before</option>
-							<option class="selectedItem" value="during">During</option>
-						</select>
-						the energy crisis
-					</p>
+					<div class="textButton">
+
+						<p class="plot-subtitle-1">
+							<select id="selectOption">
+								<option class="selectedItem" value="before">Before</option>
+								<option class="selectedItem" value="during">During</option>
+							</select>
+							the energy crisis
+						</p>
+	
+						<button type="button" id="showGas">Show gas</button>
+
+					</div>
 
 					<div id="containerCTX"></div>
 
@@ -100,6 +106,9 @@
 						    .curve(d3.curveLinear)
 						    .x((d) => xCTX(Date.parse(d.date)))
 						    .y((d) => yCTX(d.elec));
+
+						d3.select("#showGas")
+							.style("opacity", 0)
 
 						const gasLine = d3.line()
 						    .curve(d3.curveLinear)
@@ -161,6 +170,16 @@
 									.transition()
 									.duration(3000)
 									.attr("d", elecLine);
+									
+								d3.select("#showGas")
+									.transition()
+									.duration(750)
+										.style("opacity", 0)
+								
+								d3.selectAll(".gasSeries")
+									.transition()
+									.duration(500)
+										.style("opacity", 0)
 
 							} else if (d3.select("#selectOption").node().value == "during") {
 
@@ -182,6 +201,12 @@
 									.transition()
 									.duration(3000)
 									.attr("d", elecLine);
+
+								d3.select("#showGas")
+									.transition()
+									.duration(1000)
+									.delay(500)
+										.style("opacity", 1)
 
 							}
 						})
@@ -222,52 +247,57 @@
 							.attr('x', widthCTX - marginRightCTX)
 							.attr('y', 0);
 
-						svgCTX.on("click", (event) => { 
+						document.getElementById ("showGas").addEventListener ("click", thatFunction, false);
+
+						function thatFunction(){ 						
 
 							gCTX.append("path")
-							    .datum(gasOnly)
-							    .attr("fill", "none")
-							    .attr("stroke", "#47ba19")
-							    .attr("stroke-width", 2.5)
-							    .attr("stroke-linejoin", "round")
-							    .attr("stroke-linecap", "round")
-							    .attr("stroke-dasharray", `0,${lCTX}`)
-							    .attr("d", gasLine)
-							    .transition()
-							    //.delay(5000)
-							    .duration(2500)
-							    //.ease(d3.easeLinear)
-							    .attr("stroke-dasharray", `${lCTX},${lCTX}`);
+								.datum(gasOnly)
+									.attr("class", "gasSeries")
+									.attr("fill", "none")
+									.attr("stroke", "#47ba19")
+									.attr("stroke-width", 2.5)
+									.attr("stroke-linejoin", "round")
+									.attr("stroke-linecap", "round")
+									.attr("stroke-dasharray", `0,${lCTX}`)
+									.attr("d", gasLine)
+								.transition()
+								//.delay(5000)
+								.duration(2500)
+								//.ease(d3.easeLinear)
+									.attr("stroke-dasharray", `${lCTX},${lCTX}`);						
 
 							gCTX.append("text")
-								.text("Gas")
-								.attr("x", xCTX(Date.parse(e2_date)) + 7.5)
-								.attr("y", 320)
-								.attr("font-family", "Kanit")
-								.attr("font-size", "25px")
-								.style("text-anchor", "start")
-								.style("fill", "#47ba19")
-								.style("opacity", 0)
-							    .transition()
+									.text("Futuros")
+									.attr("class", "gasSeries")
+									.attr("x", xCTX(Date.parse(e2_date)) + 7.5)
+									.attr("y", 320)
+									.attr("font-family", "Kanit")
+									.attr("font-size", "25px")
+									.style("text-anchor", "start")
+									.style("fill", "#47ba19")
+									.style("opacity", 0)
+								.transition()
 								.delay(1750)
 								.duration(1000)
-								.style("opacity", 1)
+									.style("opacity", 1)						
 
 							gCTX.append("text")
-								.text("Futures")
-								.attr("x", xCTX(Date.parse(e2_date)) + 7.5)
-								.attr("y", 350)
-								.attr("font-family", "Kanit")
-								.attr("font-size", "25px")
-								.style("text-anchor", "start")
-								.style("fill", "#47ba19")
-								.style("opacity", 0)
-							    .transition()
+									.text("de Gas")
+									.attr("class", "gasSeries")
+									.attr("x", xCTX(Date.parse(e2_date)) + 7.5)
+									.attr("y", 350)
+									.attr("font-family", "Kanit")
+									.attr("font-size", "25px")
+									.style("text-anchor", "start")
+									.style("fill", "#47ba19")
+									.style("opacity", 0)
+								.transition()
 								.delay(1750)
 								.duration(1000)
-								.style("opacity", 1)
+									.style("opacity", 1)						
 
-						})
+							}
 						
 					    containerCTX.append(svgCTX.node());
 
@@ -362,6 +392,7 @@
 
 						<p class="slide-text-1">Counterfactual estimation via 
 							<span style="font-weight: 400;">Synthetic controls</span>
+							(Abadie, 2021)
 						</p>
 
 						<p class="fragment slide-text-1" data-fragment-index="1">Outcomes of interest</p>
@@ -442,6 +473,11 @@
 						<span class="synth-span">synthetic</span>
 						all-items CPI series for Spain
 					</p>
+
+					<div class="buttonsPanel">
+						<button id="resButton1" class="buttons">1. Generate synthetic control</button>
+						<button id="resButton2" class="buttons">2. Estimate effect</button>
+					</div>
 
 					<div id="containerSC"></div>
 
@@ -570,7 +606,12 @@
 						    .attr("stroke-linecap", "round")
 						    .attr("d", obsLine);
 
-						svgSC.on("mouseenter", (event) => {
+						d3.select("#resButton2")
+								.style("opacity", 0)
+
+						document.getElementById ("resButton1").addEventListener ("click", generateSC, false);
+
+						function generateSC() {
 
 							gSC.append("path")
 							    .datum(preSeries)
@@ -586,9 +627,16 @@
 							    .ease(d3.easeLinear)
 							    .attr("stroke-dasharray", `${lSC},${lSC}`); 
 
-						})
+							d3.select("#resButton2")
+								.transition()
+								.duration(1000)
+									.style("opacity", 1)
 
-						svgSC.on("click", (event) => {
+						}
+
+						document.getElementById ("resButton2").addEventListener ("click", estimateEffect, false);
+
+						function estimateEffect() {
 
 							gSC.append("path")
 							    .datum(postSeries)
@@ -601,8 +649,8 @@
 							    .attr("d", obsLine)
 							    .transition()
 							    //.delay(5000)
-							    .duration(2500)
-							    .ease(d3.easeLinear)
+							    .duration(2000)
+							    // .ease(d3.easeLinear)
 							    .attr("stroke-dasharray", `${lSC},${lSC}`);
 
 							gSC.append("path")
@@ -616,11 +664,11 @@
 							    .attr("d", synthLine)
 							    .transition()
 							    //.delay(5000)
-							    .duration(2500)
-							    .ease(d3.easeLinear)
+							    .duration(2000)
+							    // .ease(d3.easeLinear)
 							    .attr("stroke-dasharray", `${lSC},${lSC}`);
 
-						});
+						}
 					
 					    containerSC.append(svgSC.node());
 
@@ -1249,125 +1297,11 @@
 
 					<ul class="references">
 						<li>Abadie, A., 2021. Using synthetic controls: Feasibility, data requirements, and methodological aspects. Journal of Economic Literature 59, 391–425. doi:10.1257/jel.20191450.</li>
-						<li>Abadie, A., Diamond, A., Hainmueller, J., 2010. Synthetic control methods for comparative case studies: Estimating the effect of California’s tobacco control program. Journal of the American Statistical Association 105, 493–505. doi:10.1198/jasa.2009.ap08746.</li>
-						<li>Abadie, A., Gardeazabal, J., 2003. The economic costs of conflict: A case study of the Basque Country. American Economic Review 93, 113–132. doi:10.1257/000282803321455188.</li>
-						<li>Barsky, R.B., Kilian, L., 2002. Oil and the macroeconomy since the 1970s. Journal of Economic Perspectives 18, 115–134. doi:10.3386/w10855.</li>
+						<li>Barchart. (2022). Dutch TTF gas jan ’23 (tgf23). URL: https://www.barchart.com/futures/quotes/TGJ23/overview</li>
+						<li>Energy-Charts. (2022). Welcome to the Energy-Charts. URL: https://energy-charts.info/</li>
+						<li>Eurostat, 2023b. HICP at constant tax rates - monthly data (index). URL: https://ec.europa.eu/eurostat/web/products-datasets/-/prc_ hicp_cind.</li>
+						<li>OMIE. (2022b). Day-ahead hourly price. URL: https://www.omie.es/en/market-results/daily/daily-market/daily-hourly-price</li>
 					</ul>
-
-				</section>
-
-				<section>
-
-					<h2 class=" slide-title">References</h2>
-
-					<ul class="references">
-						<li>Chernozhukov, V., Wuthrich, K., Zhu, Y., 2022. Practical and robust t-test based inference for synthetic control and related methods. arxiv e-prints. arXiv preprint arXiv:1812.10820v4</li>
-						<li>Clark, T.E., Terry, S.J., 2010. Time variation in the inflation passthrough of energy prices. Journal of Money, Credit and Banking 42, 1419–1433. doi:10.2139/ssrn.1349851.</li>
-						<li>Ferman, B., Pinto, C., Possebom, V., 2020. Cherry picking with synthetic controls. Journal of Policy Analysis and Management 39, 510–532. doi:10. 1002/pam.22206.</li>
-						<li>Kilian, L., Zhou, X., 2022. The impact of rising oil prices on US inflation and inflation expectations in 2020–23. Energy Economics 113, 106228. doi:10.1016/j.eneco.2022.106228.</li>
-					</ul>
-
-				</section>
-
-				<section class="chapter" data-transition="slide" data-background-color="rgb(35, 35, 35)">
-					<h1>Appendix</h1>
-				</section>
-
-				<section>
-					<img class="r-stretch" src="images/DAP.png">
-				</section>
-
-				<section>
-					<img class="r-stretch" src="images/NRG.png">
-				</section>
-
-				<section>
-					<img class="r-stretch" src="images/xNRG.png">
-				</section>
-
-				<section>
-					<img class="r-stretch" src="images/CP00.png">
-				</section>
-
-				<section>
-
-					<h2 class="slide-title">Synthetic controls</h2>
-
-					<ul class="list-3">
-						<li>Introduced by Abadie and Gardeazabal (2003),  Abadie et al. (2010)</li>
-						<li class="fragment">Setup: One treated unit; several untreated units</li>
-						<li class="fragment">Counterfactual is estimated as weighted average of untreated units → synthetic control unit</li>
-						<li class="fragment">Similar units receive larger weights, vv</li>
-					</ul>
-
-				</section>
-
-				<section>
-
-					<h2 class="slide-title">Data and specifications</h2>
-
-					<ul class="list-1">
-						<li class="fragment">Control pool: 23 European countries</li>
-						<li class="fragment">Portugal is removed to estimate effect for Spain, vv</li>
-						<li class="fragment">Outcome variables: DAP, NRG, xNRG and CP00</li>
-						<li class="fragment">All pre-treatment lags as predictors (Ferman et al., 2020)</li>
-						<li class="fragment">June 2022 is removed from the analysis</li>
-						<li class="fragment">Inference according to Chernozhukov et al. (2022)</li>
-					</ul>
-
-				</section>
-
-				<section>
-
-					<h2 class="slide-title-3">Synthetic controls (Abadie, 2021)</h2>
-
-					<p class="fragment sc-bullet">We observe 
-						<span>\((J+1) \in \mathbb{N}\)</span> 
-						units over period 
-						<span>\(T \in \mathbb{N}\)</span>
-					</p>
-
-					<p class="fragment sc-bullet">
-						<span>\(J_{1}\)</span> 
-						is assigned treatment at 
-						<span>\(T_{0} \in (1, T)\)</span>
-						; is treated over 
-						<span>\(T_{1} = T-T_{0}\)</span> 
-						periods
-					</p>
-
-					<p class="fragment sc-bullet">
-						Our goal is to estimate 
-						<span>\(\alpha_{1,t}=Y_{1,t}^{1}-Y_{1,t}^{0}\)</span>
-						, for 
-						<span>\(t \in \{T_{0}+1, ..., T\}\)</span>
-					</p>
-
-					<p class="fragment sc-bullet">
-						Since 
-						<span>\(Y_{1,t}^{1}\)</span> 
-						is observable, we focus on 
-						<span>\(Y_{1,t}^{0}\)</span> 
-						to estimate 
-						<span>\(\alpha_{1,t}\)</span>
-					</p>
-
-					<p class="fragment sc-bullet">
-						Synthetic controls produce 
-						<span>\(\widehat{Y}_{1,t}^{0}=\sum_{j=2}^{J+1} \widehat{w}_{j} Y_{j,t}\)</span> 
-						for each 
-						<span>\(t \in \{1,...,T\}\)</span>
-					</p>
-
-					<p class="fragment sc-bullet">
-						<span>\(\mathbf{\widehat{W}(V)}\)</span> 
-						is a vector of optimized weights assigned to each control unit
-					</p>
-
-					<p class="fragment sc-bullet">
-						<span>\(\mathbf{\widehat{V}}\)</span> 
-						is a vector of optimized weights assigned to each predictor
-					</p>
 
 				</section>
 
@@ -1375,23 +1309,7 @@
 		</div>
 
 		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script src="plugin/math/math.js"></script>
 		<script src="js/d3.v7.min.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
-
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
-			});
-
-		</script>
 
 	</body>
 
