@@ -1305,8 +1305,117 @@
 
 				</section>
 
+				<!-- <section>
+
+					<h2 class="slide-title">References</h2>
+
+					<ul class="references">
+						<li>Abadie, A., Diamond, A., Hainmueller, J., 2010. Synthetic control methods for comparative case studies: Estimating the effect of California’s tobacco control program. Journal of the American Statistical Association 105, 493–505. doi:10.1198/jasa.2009.ap08746.</li>
+						<li>Abadie, A., Gardeazabal, J., 2003. The economic costs of conflict: A case study of the Basque Country. American Economic Review 93, 113–132. doi:10.1257/000282803321455188.</li>
+						<li>Chernozhukov, V., Wuthrich, K., Zhu, Y., 2022. Practical and robust t-test based inference for synthetic control and related methods. arxiv e-prints. arXiv preprint arXiv:1812.10820v4</li>
+						<li>Ferman, B., Pinto, C., Possebom, V., 2020. Cherry picking with synthetic controls. Journal of Policy Analysis and Management 39, 510–532. doi:10. 1002/pam.22206.</li>
+					</ul>
+
+				</section>
+
+				<section>
+
+					<h2 class="slide-title">Synthetic controls</h2>
+
+					<ul class="list-3">
+						<li>Introduced by Abadie and Gardeazabal (2003),  Abadie et al. (2010)</li>
+						<li class="fragment">Setup: One treated unit; several untreated units</li>
+						<li class="fragment">Counterfactual is estimated as weighted average of untreated units → synthetic control unit</li>
+						<li class="fragment">Similar units receive larger weights, v v</li>
+					</ul>
+
+				</section>
+
+				<section>
+
+					<h2 class="slide-title">Data and specifications</h2>
+
+					<ul class="list-1">
+						<li class="fragment">Control pool: 23 European countries</li>
+						<li class="fragment">Portugal is removed to estimate effect for Spain, v v</li>
+						<li class="fragment">Outcome variables: DAP, NRG, xNRG and CP00</li>
+						<li class="fragment">All pre-treatment lags as predictors (Ferman et al., 2020)</li>
+						<li class="fragment">June 2022 is removed from the analysis</li>
+						<li class="fragment">Inference according to Chernozhukov et al. (2022)</li>
+					</ul>
+
+				</section>
+
+				<section>
+
+					<h2 class="slide-title-3">Synthetic controls (Abadie, 2021)</h2>
+
+					<p class="fragment sc-bullet">We observe 
+						<span>\((J+1) \in \mathbb{N}\)</span> 
+						units over period 
+						<span>\(T \in \mathbb{N}\)</span>
+					</p>
+
+					<p class="fragment sc-bullet">
+						<span>\(J_{1}\)</span> 
+						is assigned treatment at 
+						<span>\(T_{0} \in (1, T)\)</span>
+						; is treated over 
+						<span>\(T_{1} = T-T_{0}\)</span> 
+						periods
+					</p>
+
+					<p class="fragment sc-bullet">
+						Our goal is to estimate 
+						<span>\(\alpha_{1,t}=Y_{1,t}^{1}-Y_{1,t}^{0}\)</span>
+						, for 
+						<span>\(t \in \{T_{0}+1, ..., T\}\)</span>
+					</p>
+
+					<p class="fragment sc-bullet">
+						Since 
+						<span>\(Y_{1,t}^{1}\)</span> 
+						is observable, we focus on 
+						<span>\(Y_{1,t}^{0}\)</span> 
+						to estimate 
+						<span>\(\alpha_{1,t}\)</span>
+					</p>
+
+					<p class="fragment sc-bullet">
+						Synthetic controls produce 
+						<span>\(\widehat{Y}_{1,t}^{0}=\sum_{j=2}^{J+1} \widehat{w}_{j} Y_{j,t}\)</span> 
+						for each 
+						<span>\(t \in \{1,...,T\}\)</span>
+					</p>
+
+					<p class="fragment sc-bullet">
+						<span>\(\mathbf{\widehat{W}(V)}\)</span> 
+						is a vector of optimized weights assigned to each control unit
+					</p>
+
+					<p class="fragment sc-bullet">
+						<span>\(\mathbf{\widehat{V}}\)</span> 
+						is a vector of optimized weights assigned to each predictor
+					</p>
+
+				</section> -->
+
 			</div>
 		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script src="js/d3.v7.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+			});
+
+		</script>
 
 	</body>
 
