@@ -177,6 +177,8 @@
 .plot-subtitle-1 select {
     font-family: "Inter";
     font-size: 23px;
+    border-radius: 5px;
+    border: .5px solid black;
 }
 
 .plot-title-2 {
@@ -227,14 +229,18 @@
 }
 
 #showGas {
-    margin: 10px 100px;
-    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-family: "Inter";
-    font-size: 23px;
+    font-size: 20px;
+    color: #47ba19;
+    margin: 10px 100px;
+    padding: 0 5px;
+    height: 34px;
+    background-color: white;
     border: .5px solid #47ba19;
     border-radius: 5px;
-    color: #47ba19;
-    background-color: white;
 }
 
 #selectOption:hover,
