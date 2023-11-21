@@ -50,8 +50,8 @@
 				<section>
 
 					<p class="plot-title-1">
-						<span class="gas-span">Precio medio de la electricidad</span>
-						en la UE
+						<span class="gas-span">Precio mayorista de la electricidad</span>
+						promedio en la UE
 					</p>
 
 					<div class="textButton">
@@ -92,7 +92,7 @@
 							heightCTX = 450, 
 							marginTopCTX = 15, 
 							marginRightCTX = 45, 
-							marginBottomCTX = 30, 
+							marginBottomCTX = 30,
 							marginLeftCTX = 80;
 						
 						// Declare the positional encodings
@@ -396,6 +396,7 @@
 
 						<p class="slide-text-1">Estimación contrafactual vía 
 							<span style="font-weight: 400;">controles sintéticos</span>
+							(Abadie, 2021)
 						</p>
 
 						<p class="fragment slide-text-1" data-fragment-index="1">Variables de interés</p>
@@ -434,30 +435,45 @@
 
 					<ul class="list-1">
 
-						<p class="slide-text-1 " >
-							<span class="pkg-name fragment" data-fragment-index="0">limSolve</span>
-							<span class="pkg-name fragment" data-fragment-index="1">; scinference</span>
-							
-						</p>
+						<div class="image-flex-1">
 
-						<p class="slide-text-1 fragment" data-fragment-index="2">
+							<div class="image-div">
+								<a class="image-link" href="https://www.r-project.org/" target="_blank">
+									<img src="images/r_logo.jpeg">
+								</a>
+							</div>
+
+							<p class="fragment" data-fragment-index="1">:</p>
+							<a href="https://cran.r-project.org/web/packages/limSolve/index.html" target="_blank">
+								<p class="pkg-name first fragment" data-fragment-index="1">limSolve</p>
+							</a>
+							<a href="https://github.com/kwuthrich/scinference" target="_blank">
+								<p class="pkg-name fragment" data-fragment-index="2">, scinference</p>
+							</a>
+						</div>
+
+						<p class="slide-text-3 fragment" data-fragment-index="3">
 							Entorno reproducible:
 						</p>
 
-						<div class="image-flex">
-
-							<div class="image-div fragment" data-fragment-index="2">
-								<img src="images/renv_logo.jpeg">
-							</div>
-
-							<p class="fragment" data-fragment-index="3">+</p>
+						<div class="image-flex-2">
 
 							<div class="image-div fragment" data-fragment-index="3">
-								<img src="images/docker_logo.png">
+								<a class="image-link" href="https://rstudio.github.io/renv/" target="_blank">
+									<img src="images/renv_logo.jpeg">
+								</a>
+							</div>
+
+							<p class="fragment" data-fragment-index="4">+</p>
+
+							<div class="image-div fragment" data-fragment-index="4">
+								<a class="image-link" href="https://www.docker.com/" target="_blank">
+									<img src="images/docker_logo.png">
+								</a>
 							</div>
 
 						</div>
-						<a class="fragment" data-fragment-index="4" target="_blank" href="https://github.com/mharoruiz/ibex">
+						<a class="fragment" data-fragment-index="5" href="https://github.com/mharoruiz/ibex"  target="_blank">
 							github.com/mharoruiz/ibex
 						</a>
 
@@ -1288,11 +1304,11 @@
 					<h2 class="slide-title">Bibliografía</h2>
 
 					<ul class="references">
-						<li>Abadie, A., 2021. Using synthetic controls: Feasibility, data requirements, and methodological aspects. Journal of Economic Literature 59, 391–425. doi:10.1257/jel.20191450.</li>
-						<li>Barchart. (2022). Dutch TTF gas jan ’23 (tgf23). URL: https://www.barchart.com/futures/quotes/TGJ23/overview</li>
-						<li>Energy-Charts. (2022). Welcome to the Energy-Charts. URL: https://energy-charts.info/</li>
-						<li>Eurostat, 2023b. HICP at constant tax rates - monthly data (index). URL: https://ec.europa.eu/eurostat/web/products-datasets/-/prc_ hicp_cind.</li>
-						<li>OMIE. (2022b). Day-ahead hourly price. URL: https://www.omie.es/en/market-results/daily/daily-market/daily-hourly-price</li>
+						<li>Abadie, A., 2021. Using synthetic controls: Feasibility, data requirements, and methodological aspects. Journal of Economic Literature 59, 391–425. DOI: <a href="https://doi.org/10.1257/jel.20191450" target="_blank">doi.org/10.1257/jel.20191450</a></li>
+						<li>Barchart. (2022). Dutch TTF gas jan ’23 (tgf23). URL: <a href="https://www.barchart.com/futures/quotes/TGJ23/overview" target="_blank">barchart.com/futures/quotes/TGJ23/overview</a></li>
+						<li>Energy-Charts. (2022). Welcome to the Energy-Charts. URL: <a href="https://energy-charts.info/" target="_blank">energy-charts.info/</a></li>
+						<li>Eurostat. (2023). HICP at constant tax rates - monthly data (index). URL: <a href="https://ec.europa.eu/eurostat/web/products-datasets/-/prc_hicp_cind" target="_blank">ec.europa.eu/eurostat/web/products-datasets/-/prc_hicp_cind</a></li>
+						<li>OMIE. (2022). Day-ahead hourly price. URL: <a href="https://www.omie.es/en/market-results/daily/daily-market/daily-hourly-price" target="_blank">omie.es/en/market-results/daily/daily-market/daily-hourly-price</a></li>
 					</ul>
 
 				</section>
